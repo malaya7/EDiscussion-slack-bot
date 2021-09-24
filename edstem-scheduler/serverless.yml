@@ -1,0 +1,17 @@
+service: edstem-scheduler
+frameworkVersion: '2'
+provider:
+  name: aws
+  runtime: python3.8
+  stage: prod
+  region: us-west-1
+  lambdaHashingVersion: 20201221
+
+functions:
+  rateHandler:
+    handler: handler.run
+    events:
+      - schedule: rate(12 hours)
+
+plugins:
+  - serverless-python-requirements

@@ -1,0 +1,6 @@
+.serverless
+*.pyc
+*.pyo
+__pycache__
+.serverless
+node_modules

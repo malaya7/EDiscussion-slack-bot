@@ -1,0 +1,20 @@
+service: sqs-reader
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: python3.8
+  stage: prod
+  region: us-west-1
+  lambdaHashingVersion: 20201221
+
+plugins:
+  - serverless-python-requirements
+
+functions:
+  edslackoffline:
+    handler: src/handler.processSQS
+    events:
+    	# Provide the ARN of your queue
+      # - sqs: arn:aws:sqs:us-west-1:672266439815:ed-stem-queue
+      - sqs: arn:aws:sqs:us-west-1:672266439815:ed-stem-queue.fifo
